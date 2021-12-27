@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using VentasReal.Services;
 
 namespace VentasReal
 {
@@ -41,6 +42,8 @@ namespace VentasReal
             });
 
             services.AddControllers();
+
+            services.AddScoped<IUserService, UserService>();
 
             var contact = new OpenApiContact()
             {

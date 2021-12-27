@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VentasReal.Models.Request;
+using VentasReal.Models.Response;
 
 namespace VentasReal.Services
 {
-    interface Interface
+    public interface IUserService
     {
+        UserResponse Auth(AuthRequest authRequest);
     }
 }
