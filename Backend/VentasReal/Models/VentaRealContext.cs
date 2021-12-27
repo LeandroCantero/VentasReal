@@ -1,8 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-
-#nullable disable
 
 namespace VentasReal.Models
 {
@@ -21,6 +20,7 @@ namespace VentasReal.Models
         public virtual DbSet<Concepto> Conceptos { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
         public virtual DbSet<Ventum> Venta { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -127,6 +127,31 @@ namespace VentasReal.Models
                     .WithMany(p => p.Venta)
                     .HasForeignKey(d => d.IdCliente)
                     .HasConstraintName("FK_venta_cliente");
+            });
+
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.ToTable("usuario");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("email");
+
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nombre");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(256)
+                    .IsUnicode(false)
+                    .HasColumnName("password");
             });
 
             OnModelCreatingPartial(modelBuilder);
