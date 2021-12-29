@@ -38,7 +38,7 @@ namespace VentasReal.Controllers
             respuesta.Exito = 1;
             respuesta.Data = userResponse;
 
-            return Ok(authRequest);
+            return Ok(userResponse);
         }
     }
 }

@@ -132,3 +132,9 @@ C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\obj\Debug\net6.0\Ve
 C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\obj\Debug\net6.0\ref\VentasReal.dll
 C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\obj\Debug\net6.0\VentasReal.pdb
 C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\obj\Debug\net6.0\VentasReal.genruntimeconfig.cache
+C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\bin\Debug\net6.0\Scrutor.dll
+C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+C:\Users\lcantero\source\repos\VentasReal\Backend\VentasReal\bin\Debug\net6.0\Swashbuckle.Examples.dll
