@@ -1,7 +1,8 @@
 <mat-drawer-container>
   <mat-drawer #drawer mode="side">
     <a [routerLink]="['/home']">Incio</a><br>
-    <a [routerLink]="['/cliente']">Cliente</a>
+    <a [routerLink]="['/cliente']">Cliente</a><br>
+    <a [routerLink]="['/venta']">Venta</a>
     <a (click)="logout()" *ngIf="usuario">Cerrar sesión</a>
   </mat-drawer>
   <div>
@@ -9,5 +10,3 @@
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
-
-<router-outlet></router-outlet>

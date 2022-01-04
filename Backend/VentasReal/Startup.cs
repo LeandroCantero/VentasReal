@@ -19,6 +19,7 @@ using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using VentasReal.Models.Common;
 using VentasReal.Services;
+using VentasReal.Tools;
 
 namespace VentasReal
 {
@@ -48,7 +49,11 @@ namespace VentasReal
                     });
             });
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new IntToStringConverter());
+                options.JsonSerializerOptions.Converters.Add(new DecimalToStringConverter());
+            });
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -74,6 +79,7 @@ namespace VentasReal
             });
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IVenta, VentaService>();
 
             var contact = new OpenApiContact()
             {

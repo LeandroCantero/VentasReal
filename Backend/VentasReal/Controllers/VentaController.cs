@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using VentasReal.Models;
 using VentasReal.Models.Request;
 using VentasReal.Models.Response;
+using VentasReal.Services;
 
 namespace VentasReal.Controllers
 {
@@ -15,6 +16,12 @@ namespace VentasReal.Controllers
     [Authorize]
     public class VentaController : ControllerBase
     {
+        private IVenta _venta;
+
+        public VentaController(IVenta venta) {
+            this._venta = venta;
+        }
+
         [HttpPost]
         public IActionResult Add(VentaRequest ventaRequest)
         {
@@ -22,48 +29,12 @@ namespace VentasReal.Controllers
 
             try
             {
-                using(VentaRealContext db = new VentaRealContext())
-                {
-                    using (var transaction = db.Database.BeginTransaction())
-                    {
-                        try
-                        {
-
-                        
-                            var venta = new Ventum();
-                            venta.Total = ventaRequest.Conceptos.Sum(d => d.Cantidad * d.PrecioUnitario);
-                            venta.Fecha = DateTime.Now;
-                            venta.IdCliente = ventaRequest.IdCliente;
-                            db.Venta.Add(venta);
-                            db.SaveChanges();
-
-                            foreach (var ventaConcepto in ventaRequest.Conceptos)
-                            {
-                                var concepto = new Models.Concepto();
-                                concepto.Cantidad = ventaConcepto.Cantidad;
-                                concepto.IdProducto = ventaConcepto.IdProducto;
-                                concepto.PrecioUnitario = ventaConcepto.PrecioUnitario;
-                                concepto.Importe = ventaConcepto.Importe;
-                                concepto.IdVenta = venta.Id;
-                                db.Conceptos.Add(concepto);
-                                db.SaveChanges();
-                            }
-
-                            transaction.Commit();
-                            respuesta.Exito = 1;
-
-                        }
-                        catch(Exception)
-                        {
-                            transaction.Rollback();
-                        }
-                    }
-                    
-                }
+                _venta.Add(ventaRequest);
+                respuesta.Exito = 1;
             }
             catch (Exception ex)
             {
-                respuesta.Mensaje = ex.InnerException.Message;
+                respuesta.Mensaje = ex.Message;
                 
             }
 
