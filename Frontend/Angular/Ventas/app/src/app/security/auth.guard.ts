@@ -12,8 +12,8 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot) {
         const usuario = this.apiauthService.usuarioData;
-
-        if (usuario) {
+        console.log(usuario.email == null);
+        if (usuario.email) {
             return true;
         }
         

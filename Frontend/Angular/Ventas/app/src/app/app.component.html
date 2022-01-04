@@ -2,6 +2,7 @@
   <mat-drawer #drawer mode="side">
     <a [routerLink]="['/home']">Incio</a><br>
     <a [routerLink]="['/cliente']">Cliente</a>
+    <a (click)="logout()" *ngIf="usuario">Cerrar sesión</a>
   </mat-drawer>
   <div>
     <button (click)="drawer.toggle();">Mostar/Ocultar</button>

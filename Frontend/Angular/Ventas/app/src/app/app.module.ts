@@ -14,7 +14,7 @@ import { DialogClienteComponent } from './cliente/dialog/dialogcliente.component
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogDeleteComponent } from './common/delete/dialogdelete.component';
 import { MatCardModule } from '@angular/material/card'
 import { LoginComponent } from './login/login.component';
@@ -42,7 +42,8 @@ import { JwtInterceptor } from './security/jwt.interceptor';
     MatSnackBarModule,
     MatCardModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}

@@ -54,7 +54,6 @@ namespace VentasReal.Models
                 entity.ToTable("concepto");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
                     .HasColumnName("id");
 
                 entity.Property(e => e.Cantidad).HasColumnName("cantidad");
